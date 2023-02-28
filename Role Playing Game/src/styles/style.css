@@ -1,0 +1,297 @@
+:root {
+  --player-accent-color: hotpink;
+  --button-bg-color: #e0e0e0;
+  --meter-percentage: 1;
+  --meter-radius: 0;
+  --meter-width: 8px;
+  --meter-border-width: 0;
+  --meter-fill-color: limegreen;
+  --meter-border-color: limegreen;
+  --meter-bg-color: #dadada;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Menlo, Monaco, monospace;
+}
+
+.Meter {
+  width: 100%;
+  height: var(--meter-width);
+  background-color: var(--meter-bg-color);
+  border-radius: var(--meter-radius);
+  border: var(--meter-border-width) solid var(--meter-border-color);
+  overflow: hidden;
+}
+
+.Meter:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--meter-fill-color);
+  transition: ease-in-out .25s;
+  transition-property: transform, opacity;
+  transform-origin: top left;
+  transform: scaleX(var(--meter-percentage));
+  opacity: calc(.25 + var(--meter-percentage));
+}
+
+.Stage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #aaa;
+}
+
+.Stage-opponent {
+  height: auto;
+  flex: 1;
+}
+
+.Stage-players {
+  flex: 1;
+  height: 40%;
+  display: flex;
+  max-height: 320px;
+  padding: 0 20px;
+  background-color: #efefef;
+}
+
+@media (min-height: 1000px) {
+  .Stage-players {
+    max-height: 400px;
+  }
+}
+
+.Player {
+  flex: 1;
+  padding: 30px 15px 0;
+}
+
+.Player,
+.Player-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.Player-panel {
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 16px;
+  background-color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.Player-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.Player-header h4 {
+  margin-bottom: 10px;
+  color: var(--player-accent-color, #222);
+}
+.Player-health {
+  font-size: 14px;
+  color: #888;
+}
+.Player-health strong {
+  font-weight: normal;
+  color: #222;
+}
+
+.Player-commands {
+  width: 100%;
+  max-width:400px;
+}
+
+.Player-commands ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+ //flex-direction: column;
+ justify-content: center;
+  align-items: center;
+  gap: .75em;
+  width: 100%;
+}
+
+.Player-commands li {
+  display: block;
+  width: 100%;
+//flex: 1 0 140px; max-width: 140px;
+}
+
+.Player-commands button {
+  width: 100%;
+}
+
+
+button {
+  appearance: none;
+  border: none;
+  height: 36px;
+  padding: 8px 16px;
+  border-radius: 3px;
+  font-weight: 600;
+  transition: ease-in-out .1s;
+  cursor: pointer;
+  background-color: var(--button-bg-color, #e0e0e0);
+}
+
+button:hover {
+  background-color: var(--player-accent-color, hotpink);
+  color: white;
+  transform: scale(1.05);
+}
+
+button:active {
+  transition-duration: 0s;
+  transform: scale(1.12);
+}
+
+
+.Player-actionMeter {
+  --meter-fill-color: var(--player-accent-color);
+  --meter-width: 5px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+
+.Stage-announcements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.Opponent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  padding: 40px;
+}
+
+.Opponent-meter {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  line-height: 1;
+}
+
+.Opponent-meter .Meter {
+  --meter-fill-color: orangered;
+  --meter-border-color: #dadada;
+  --meter-border-width: 3px;
+  --meter-radius: 8px;
+  --meter-width: 16px;
+  --meter-border: 3px;
+  width: 60vw;
+  color: orangered;
+  max-width: 100%;
+  min-width: 200px;
+}
+
+@media (min-width: 600px) {
+  .Opponent {
+    padding-bottom: 60px;
+  }
+
+  .Opponent-meter .Meter {
+    width: 60vw;
+    max-width: 860px;
+    min-width: 200px;
+  }
+}
+
+.MsgPanel {
+  width: 100%;
+  max-width: 860px;
+  margin: 40px;
+  padding: 25px 20px;
+  min-height: 100px;
+  max-height: 160px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .2);
+  overflow: auto;
+  border: 6px solid rgba(0, 0, 0, .25);
+  transition: ease-in-out .1s;
+  transition-property: opacity, transform;
+  transform: translateY(6px);
+  opacity: 0;
+}
+
+.MsgPanel.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.MsgPanel ul {
+  list-style: square;
+  margin: 0;
+  padding: 0 0 0 1em;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.MsgPanel li {
+  margin: 0;
+  padding: 0;
+  opacity: .35;
+}
+
+.MsgPanel li:nth-last-child(4) {
+  opacity: .35;
+}
+
+.MsgPanel li:nth-last-child(3) {
+  opacity: .5;
+}
+
+.MsgPanel li:nth-last-child(2) {
+  opacity: .7;
+}
+
+.MsgPanel li:last-child {
+  opacity: 1;
+}
+
+.MsgPanel li + li {
+  margin-top: .5em;
+}
+
+.MsgPanel label {
+  color: var(--player-accent-color);
+  font-weight: bold;
+}
+
+.MsgPanel strong {
+  font-weight: normal;
+  text-shadow: 0 0 4px rgba(0, 0, 0, .4)
+}

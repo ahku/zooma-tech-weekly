@@ -1,0 +1,16 @@
+{
+  "name": "zooma-tech-rpg",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.3",
+    "vite": "^2.3.0"
+  },
+  "dependencies": {
+    "prettier": "^2.3.0"
+  }
+}

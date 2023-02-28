@@ -1,0 +1,18 @@
+{
+  "name": "rgb-demo-presentation",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base=/tech-weekly/2021-05-27-learnings-from-building-a-game-part-1/",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.28.5",
+    "@slidev/theme-apple-basic": "^0.20.0",
+    "@slidev/theme-default": "^0.21.1",
+    "@slidev/theme-seriph": "^0.21.1",
+    "prism-theme-vars": "^0.2.2",
+    "slidev-theme-flayyer": "^1.0.2",
+    "slidev-theme-geist": "^0.4.0"
+  }
+}

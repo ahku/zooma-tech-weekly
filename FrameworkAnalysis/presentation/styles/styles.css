@@ -1,0 +1,77 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply mt-0;
+}
+p,
+ul,
+ol {
+  font-size: 1.25rem;
+}
+
+#slide-content {
+  @apply p-0;
+}
+
+.cover {
+  @apply flex items-center p-10;
+}
+
+blockquote {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 0.3em solid #ddd;
+  font-style: italic;
+}
+
+.slidev-layout {
+  --prism-string: #0092a3;
+  --prism-builtin: #0092a3;
+
+  @apply py-6 px-10;
+
+  > div {
+    > *:first-child {
+      @apply !mt-0;
+    }
+    > *:last-child {
+      @apply !mb-0;
+    }
+  }
+
+  &.default {
+    h1 {
+      @apply mt-6 mb-5;
+    }
+  }
+
+  //------------------------------------------------------------------------
+  //  Lists
+  //------------------------------------------------------------------------
+  ul,
+  ol {
+    margin-left: 1em;
+  }
+  li {
+    margin-bottom: 0.375em;
+  }
+  ul {
+    list-style: square;
+  }
+  ol {
+    list-style: decimal;
+  }
+  ul,
+  ol {
+    ul,
+    ol {
+      @apply mt-4 mb-5 ml-8;
+    }
+  }
+
+  .slidev-code {
+    @apply !mb-4;
+  }
+}
