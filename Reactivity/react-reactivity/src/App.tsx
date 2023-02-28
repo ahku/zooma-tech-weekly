@@ -8,7 +8,9 @@ function App() {
   return (
     <div>
       <Counter value={count} />
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <div className="text-center">
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+      </div>
     </div>
   );
 }

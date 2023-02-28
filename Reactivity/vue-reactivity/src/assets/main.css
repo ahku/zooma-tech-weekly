@@ -66,6 +66,9 @@ code {
   color: #ff9fce;
 }
 
+.text-center {
+  text-align: center;
+}
 button {
   margin: 1em 0;
 }

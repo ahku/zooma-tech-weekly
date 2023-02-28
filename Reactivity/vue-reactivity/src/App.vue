@@ -8,6 +8,8 @@
   <div>
     <Counter :value="count" />
 
-    <button @click="count++">Increment</button>
+    <div class="text-center">
+      <button @click="count++">Increment</button>
+    </div>
   </div>
 </template>
